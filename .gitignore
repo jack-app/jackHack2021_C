@@ -5,3 +5,4 @@ __pycache__/
 jackhack_env/
 memo.txt
 .env
+task.json
