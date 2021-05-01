@@ -18,3 +18,9 @@ class Hello(db.Model):
         if hello_list is None:
             return []
         return hello_list
+
+    def postHello(message):
+        new_hello = Hello(message=message)
+
+        db.session.add(new_hello)
+        db.session.commit()
