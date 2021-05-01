@@ -1,24 +1,20 @@
 import os
 
-from flask import Flask, request, jsonify, abort
+from flask import Flask
+from flask_cors import CORS
+
+from utils.error_handler import handle_bad_request, handle_not_found_request
+from controller.hello import hello
 
 app = Flask(__name__)
+CORS(app)
 
+# error handlinghandle_bad_request
+app.register_error_handler(400, handle_bad_request)
+app.register_error_handler(404, handle_not_found_request)
 
-@app.errorhandler(400)
-def error_handler(error):
-    res = jsonify({
-        'error': {
-            'message': error.description['message']
-        },
-        'code': error.code
-    })
-    return res, error.code
-
-
-@app.route("/")
-def hello_world():
-    return jsonify({"hello": "world"})
+# controller
+app.add_url_rule('/hello', 'hello', hello)
 
 
 if __name__ == "__main__":
