@@ -28,8 +28,8 @@ if __name__ == "__main__":
         'db_name': os.getenv('DB_NAME')
     }
     app.config['SQLALCHEMY_DATABASE_URI'] = \
-        'mysql+pymysql://{user}:{password}@{host}/{db_name} \
-        ?charset=utf8'.format(**db_config)
+        'mysql+pymysql://{user}:{password}@{host}/{db_name}?charset=utf8'.format(
+            **db_config)
     db.init_db(app)
 
     port = int(os.environ.get('PORT', 5000))
