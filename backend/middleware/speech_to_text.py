@@ -1,12 +1,12 @@
-from google.cloud import speech
+from google.cloud import speech_v1p1beta1
 
 
 def speech_to_text(voice_file):
-    client = speech.SpeechClient()
+    client = speech_v1p1beta1.SpeechClient()
 
     language_code = "ja-JP"
     sample_rate_hertz = 44100
-    encoding = speech.RecognitionConfig.AudioEncoding.MP3
+    encoding = speech_v1p1beta1.RecognitionConfig.AudioEncoding.MP3
     config = {
         "language_code": language_code,
         "sample_rate_hertz": sample_rate_hertz,
@@ -15,8 +15,9 @@ def speech_to_text(voice_file):
         # "diarization_speaker_count": people_num
     }
 
-    content = voice_file.read()
+    voice_byte = voice_file.read()
+    content = voice_byte
     audio = {"content": content}
-    response = client.recognize(config, audio)
+    response = client.recognize(config=config, audio=audio)
 
     return response
