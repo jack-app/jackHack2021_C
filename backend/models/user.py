@@ -21,6 +21,11 @@ class User(db.Model):
             return []
         return user_list
 
+    def get_user(id):
+        user = User.query.filter(User.id == id).one()
+
+        return user
+
     def post_user(self):
         new_user = self
 

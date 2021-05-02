@@ -13,6 +13,12 @@ def get_users():
     return jsonify(res)
 
 
+def get_user(user_id):
+    user = User.get_user(user_id)
+
+    return jsonify(user.to_dict())
+
+
 def register_user():
     name = request.json["name"]
     new_user = User(name=name)
