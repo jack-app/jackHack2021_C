@@ -20,9 +20,9 @@ def words_embedding(text):
     word_list = list(t.tokenize(text, wakati=True))
 
     model = FastText.load(fasttext_model_path)
-    vecs = []
+    vecs = {}
     for word in word_list:
         vec = model.wv[word]
-        vecs.append(vec.tolist())
+        vecs[word] = vec.tolist()
 
     return vecs
