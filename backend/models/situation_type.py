@@ -2,8 +2,9 @@ from db.db import db
 
 
 class SituationType(db.Model):
+    
     id = db.Column(db.Integer, autoincrement=True,primary_key=True)
-    name = db.Column(db.String(1024), primary_key=true)
+    name = db.Column(db.String(1024))
 
     def to_dict(self):
     
