@@ -1,4 +1,4 @@
-aufrom db.db import db
+from db.db import db
 
 
 class User(db.Model):
