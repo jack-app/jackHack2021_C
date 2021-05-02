@@ -20,3 +20,12 @@ class SituationType(db.Model):
         if situation_type_list is None:
             return[]
         return situation_type_list            
+    
+    def post_situation_type(self):
+        new_situation_type = self
+
+        db.session.add(new_situation_type)
+        db.session.flush()
+        db.session.commit()
+
+        return new_situation_type.id

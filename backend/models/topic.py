@@ -19,3 +19,12 @@ class Topic(db.Model):
         if topic_list is None:
             return []
         return topic_list
+    
+    def post_topic(self):
+        new_topic = self
+
+        db.session.add(new_topic)
+        db.session.flush()
+        db.session.commit()
+
+        return new_topic.id    
