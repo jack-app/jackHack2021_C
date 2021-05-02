@@ -11,4 +11,4 @@ class Question(db.Model):
     def get_questions(topic_id):
         question_list = Question.query.filter(Question.topic_id == topic_id)
         
-        return question    
+        return question_list   
