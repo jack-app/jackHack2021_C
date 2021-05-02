@@ -2,8 +2,8 @@ on:
   push:
     branches:
       - master
-    # paths:
-    #   - "backend/**"
+    paths:
+      - "backend/**"
 
 name: Deploy backend to Amazon ECS
 
