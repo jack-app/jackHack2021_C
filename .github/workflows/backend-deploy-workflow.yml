@@ -2,8 +2,8 @@ on:
   push:
     branches:
       - master
-    paths:
-      - "backend/**"
+    # paths:
+    #   - "backend/**"
 
 name: Deploy backend to Amazon ECS
 
@@ -15,6 +15,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Make Google Credential
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        run: |
+          touch google-credential.json
+          echo ${GOOGLE_APPLICATION_CREDENTIALS_JSON} > google-credential.json
+        working-directory: ./backend
 
       - name: Make task-definition
         env:
@@ -59,8 +67,8 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: jackhack-2021-backend-dev-v1
-          cluster: jackhack-2021-backend-dev
+          service: jackhack-2021-backend-dev-v2
+          cluster: jackhack-2021-server-dev
           wait-for-service-stability: true
 
       - name: Slack Notification Success
