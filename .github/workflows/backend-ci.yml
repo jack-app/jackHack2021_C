@@ -47,7 +47,7 @@ jobs:
         working-directory: ./backend
 
       - name: Slack Notification Success
-        uses: rtCamp/action-slack-notify@v2.0.0
+        uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_COLOR: "#5cb85c"
@@ -56,7 +56,7 @@ jobs:
 
       - name: Slack Notification Failure
         if: failure()
-        uses: rtCamp/action-slack-notify@v2.0.0
+        uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_COLOR: "#dc143c"
