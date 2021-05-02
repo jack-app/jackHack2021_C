@@ -7,6 +7,7 @@ from flask_cors import CORS
 from db import db
 from utils.error_handler import handle_bad_request, handle_not_found_request
 from controller.hello import get_hello, post_hello
+from controller.user import get_users
 
 app = Flask(__name__)
 CORS(app)
@@ -18,6 +19,8 @@ app.register_error_handler(404, handle_not_found_request)
 # controller
 app.add_url_rule('/hello', 'get_hello', get_hello)
 app.add_url_rule('/hello', 'post_hello', post_hello, methods=['POST'])
+
+app.add_url_rule('/users', 'get_users', get_users)
 
 
 if __name__ == "__main__":
