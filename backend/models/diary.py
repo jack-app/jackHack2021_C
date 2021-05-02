@@ -10,7 +10,7 @@ class Diary(db.Model):
 
 def to_dict(self):
     return{"id": self.id,
-    "name":self.name,}
+    "title":self.title,"content":self.content,"user_id":self.user_id,"timestamp":self.timestamp}
 
 def __repr__(self):
     return '<Diary %r>' % self.name
