@@ -3,7 +3,10 @@ from db.db import db
 
 class Diary(db.Model):
     id = db.Column(db.Integer,autoincrement=True,primary_key=True)
-    name = db.Column(db.String(1024))
+    title = db.Column(db.String(128))
+    content = db.Column(db.String(4096))
+    user_id = db.Column(db.Integer)
+    timestamp =db.Column(db.Timestamp)
 
 def to_dict(self):
     return{"id": self.id,
