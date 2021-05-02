@@ -2,15 +2,17 @@ from db.db import db
 
 
 class Topic(db.Model):
-    # TODO: カラムの宣言
+    message = db.Column(db.String(256), primary_key=True)
 
     def to_dict(self):
-        # TODO: to_dictの実装
-        pass
+        return{'message': self.message,}
 
     def __repr__(self):
-        return '<Topic %r>' % self.name
+        return '<Topic %r>' % self.message
 
     def get_topic():
-        # TODO: ここから実装
-        pass
+        topic_list = Topic.query.all()
+
+        if topic_list ia None:
+            return []
+        return topic_list
