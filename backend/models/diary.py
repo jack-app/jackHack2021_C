@@ -16,7 +16,7 @@ def __repr__(self):
     return '<Diary %r>' % self.name
 
 def get_diarys():
-    diarys_list = Diarys.query.all()    
+    diarys_list = Diary.query.all()    
 
     if diarys_list is None:
         return []
