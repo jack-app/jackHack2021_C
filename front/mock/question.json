@@ -1,0 +1,18 @@
+{
+    "questions": [
+        {
+            "id": "type1",
+            "topic": [
+                {
+                    "topic": "topic1"
+                },
+                {
+                    "topic": "topic2"
+                },
+                {
+                    "topic": "topic3"
+                }
+            ]
+        }
+    ]
+}
