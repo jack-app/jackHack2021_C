@@ -2,8 +2,8 @@ on:
   push:
     branches:
       - master
-    paths:
-      - "front/**"
+#     paths:
+#       - "front/**"
 
 name: Deploy React application to AWS S3
 
