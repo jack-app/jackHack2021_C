@@ -9,8 +9,6 @@ t = Tokenizer()
 
 def text_embedding(text):
     word_list = list(t.tokenize(text, wakati=True))
-    for token in t.tokenize(text):
-        print(token)
 
     model = Doc2Vec.load(doc2vec_model_path)
     vec = model.infer_vector(word_list)
@@ -19,7 +17,11 @@ def text_embedding(text):
 
 
 def words_embedding(text):
-    word_list = list(t.tokenize(text, wakati=True))
+    # word_list = list(t.tokenize(text, wakati=True))
+    word_list = []
+    for token in t.tokenize(text):
+        if token.part_of_speech.split(',')[0] == '名詞':
+            word_list.append(token.surface)
 
     model = FastText.load(fasttext_model_path)
     vecs = {}
