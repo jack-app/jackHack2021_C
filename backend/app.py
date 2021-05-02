@@ -8,8 +8,6 @@ from db import db
 from utils.error_handler import handle_bad_request, handle_not_found_request
 from controller.hello import get_hello, post_hello
 from controller.user import get_users
-from controller.situation_type import get_situation_type
-from controller.topic import get_topic
 
 app = Flask(__name__)
 CORS(app)
@@ -23,9 +21,6 @@ app.add_url_rule('/hello', 'get_hello', get_hello)
 app.add_url_rule('/hello', 'post_hello', post_hello, methods=['POST'])
 
 app.add_url_rule('/users', 'get_users', get_users)
-
-app.add_url_rule('/template/type', 'get_type', get_situation_type)
-app.add_url_rule('/template/topic', 'get_topic', get_topic)
 
 
 if __name__ == "__main__":
