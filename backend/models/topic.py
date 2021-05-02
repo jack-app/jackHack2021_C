@@ -2,10 +2,13 @@ from db.db import db
 
 
 class Topic(db.Model):
-    message = db.Column(db.String(256), primary_key=True)
+    id = db.Column(db.Integer,autoincrement=True,primary_key=True)
+    name = db.Column(db.String(256))
 
     def to_dict(self):
-        return{'message': self.message,}
+        return{
+            "id": self.id,
+            "name": self.name,}
 
     def __repr__(self):
         return '<Topic %r>' % self.message
@@ -13,6 +16,6 @@ class Topic(db.Model):
     def get_topic():
         topic_list = Topic.query.all()
 
-        if topic_list ia None:
+        if topic_list is None:
             return []
         return topic_list
