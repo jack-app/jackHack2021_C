@@ -19,6 +19,9 @@ def speech_to_text(voice_file):
     content = voice_byte
     audio = {"content": content}
     response = client.recognize(config=config, audio=audio)
+    # words = []
+    # for word in response.results[0].alternatives[0].words:
+    #     words.append(word.word.split('|')[0])
     text = response.results[0].alternatives[0].transcript
 
     return text
