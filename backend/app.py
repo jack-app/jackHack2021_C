@@ -8,6 +8,7 @@ from db import db
 from utils.error_handler import handle_bad_request, handle_not_found_request
 from controller.hello import get_hello, post_hello
 from controller.user import get_users, get_user, register_user
+from controller.extract_words import extract_words
 
 app = Flask(__name__)
 CORS(app)
@@ -23,6 +24,9 @@ app.add_url_rule('/hello', 'post_hello', post_hello, methods=['POST'])
 app.add_url_rule('/users', 'get_users', get_users)
 app.add_url_rule('/user/<int:user_id>', 'get_user', get_user)
 app.add_url_rule('/user', 'register_user', register_user, methods={'POST'})
+
+app.add_url_rule('/extract-word', 'extract-word',
+                 extract_words, methods={'POST'})
 
 
 if __name__ == "__main__":
