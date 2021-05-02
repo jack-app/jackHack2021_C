@@ -9,6 +9,6 @@ class Question(db.Model):
         return{"id": self.id,"topic": self.topic,"content": self.content,}
 
     def get_questions(topic_id):
-        question_list = Question.query.filter(Query.topic_id == topic_id)
+        question_list = Question.query.filter(Question.topic_id == topic_id)
         
         return question    
