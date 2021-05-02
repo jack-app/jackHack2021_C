@@ -18,11 +18,12 @@ def get_diary(diary_id):
     return jsonify(diary.todict())
 
 def register_diary():
-    name = request.json["name"]
+    
     title = request.json["title"]
     content = request.json["content"]
     user_id = request.json["user_id"]
-    new_diary = Diary(name=name)
-    diary_id = new_diary/post_diary()
+    timestamp = request.json["timestamp"]
+    new_diary.post_diary() = Diary(title=title,content=content,user_id=user_id,timestamp=timestamp)
+    diary_id = new_diary.post_diary()
 
     return jsonify({"id":diary_id}) 
