@@ -19,5 +19,6 @@ def speech_to_text(voice_file):
     content = voice_byte
     audio = {"content": content}
     response = client.recognize(config=config, audio=audio)
+    text = response.results[0].alternatives[0].transcript
 
-    return response
+    return text
