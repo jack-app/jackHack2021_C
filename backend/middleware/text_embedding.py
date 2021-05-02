@@ -9,6 +9,8 @@ t = Tokenizer()
 
 def text_embedding(text):
     word_list = list(t.tokenize(text, wakati=True))
+    for token in t.tokenize(text):
+        print(token)
 
     model = Doc2Vec.load(doc2vec_model_path)
     vec = model.infer_vector(word_list)
