@@ -20,9 +20,9 @@ jobs:
         env:
           GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         run: |
-          touch voice-recognition.json
-          echo ${GOOGLE_APPLICATION_CREDENTIALS_JSON} > voice-recognition.json
-          export GOOGLE_APPLICATION_CREDENTIALS=voice-recognition.json
+          touch google-credential.json
+          echo ${GOOGLE_APPLICATION_CREDENTIALS_JSON} > google-credential.json
+        working-directory: ./backend
 
       - name: Make task-definition
         env:
