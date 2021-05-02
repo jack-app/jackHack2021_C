@@ -13,6 +13,7 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User %r>' % self.name
+    
 
     def get_users():
         user_list = User.query.all()

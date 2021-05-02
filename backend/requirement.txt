@@ -15,3 +15,6 @@ six==1.15.0
 SQLAlchemy==1.4.12
 Werkzeug==1.0.1
 google-cloud-speech==2.3.0
+gensim==4.0.1
+beautifulsoup4==4.9.3
+Janome==0.4.1
