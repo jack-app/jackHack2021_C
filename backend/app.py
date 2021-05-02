@@ -7,6 +7,8 @@ from flask_cors import CORS
 from db import db
 from utils.error_handler import handle_bad_request, handle_not_found_request
 from controller.hello import get_hello, post_hello
+from controller.user import get_users, get_user, register_user
+from controller.extract_words import extract_words
 
 app = Flask(__name__)
 CORS(app)
@@ -19,6 +21,13 @@ app.register_error_handler(404, handle_not_found_request)
 app.add_url_rule('/hello', 'get_hello', get_hello)
 app.add_url_rule('/hello', 'post_hello', post_hello, methods=['POST'])
 
+app.add_url_rule('/users', 'get_users', get_users)
+app.add_url_rule('/user/<int:user_id>', 'get_user', get_user)
+app.add_url_rule('/user', 'register_user', register_user, methods={'POST'})
+
+app.add_url_rule('/extract-word', 'extract-word',
+                 extract_words, methods={'POST'})
+
 
 if __name__ == "__main__":
     load_dotenv()
@@ -28,9 +37,8 @@ if __name__ == "__main__":
         'host': os.getenv('DB_HOST'),
         'db_name': os.getenv('DB_NAME')
     }
-    app.config['SQLALCHEMY_DATABASE_URI'] = \
-        'mysql+pymysql://{user}:{password}@{host}/{db_name}?charset=utf8'.format(
-            **db_config)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://{user}:{password}@{host}/{db_name}?charset=utf8'.format(
+        **db_config)
     db.init_db(app)
 
     port = int(os.environ.get('PORT', 5000))

@@ -5,9 +5,13 @@ from models.hello import Hello
 
 def get_hello():
     hellos = Hello.getHello()
-    print(hellos)
 
-    return jsonify({"hello": "world"})
+    res = []
+    for h in hellos:
+        h_dict = h.to_dict()
+        res.append(h_dict)
+
+    return jsonify(res)
 
 
 def post_hello():
