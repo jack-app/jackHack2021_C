@@ -23,7 +23,7 @@ def register_diary():
     content = request.json["content"]
     user_id = request.json["user_id"]
     timestamp = request.json["timestamp"]
-    new_diary.post_diary() = Diary(title=title,content=content,user_id=user_id,timestamp=timestamp)
-    diary_id = new_diary.post_diary()
+    new_diary = = Diary(title=title,content=content,user_id=user_id,timestamp=timestamp)
+     new_diary.post_diary()
 
     return jsonify({"id":diary_id}) 
