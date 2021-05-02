@@ -11,6 +11,7 @@ from controller.user import get_users, get_user, register_user
 from controller.diary import get_diarys, get_diary, register_diary
 from controller.situation_type import get_situation_type, resister_situation_type
 from controller.topic import get_topics, register_topic
+from controller.question import get_questions
 from controller.extract_words import extract_words
 
 app = Flask(__name__)
@@ -44,6 +45,9 @@ app.add_url_rule('/situation_type', 'resister_situation_type',
 app.add_url_rule('/topic', 'get_topic', get_topics)
 app.add_url_rule('/topic', 'register_topic',
                  register_topic, methods={'POST'})
+
+# question
+app.add_url_rule('/questions/<int:topic_id>', 'get_questions', get_questions)
 
 # word processing
 app.add_url_rule('/extract-word', 'extract-word',
