@@ -1,7 +1,16 @@
-import {useGetDataApi} from "hooks/useApi";
+import {useGetDataApi, usePostDataApi} from "hooks/useApi";
+
+export function usePostUser(username: string){
+    const [ d, loading, error, loadFn ] = usePostDataApi(`/user`, {
+        name: username
+    });
+    const userid = d?.username;
+    console.log(d);
+    return {userid, loading};
+}
 
 function useUser(){
-    const [ d, loading, error, loadFn ] = useGetDataApi(`api/v1/diary/users`);
+    const [ d, loading, error, loadFn ] = useGetDataApi(`/users`);
     const [ userId, username ] = d || [];
     return username;
 }

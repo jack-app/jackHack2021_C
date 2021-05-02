@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import TopPage from "container/TopPage";
 import TempleteStuPage from "container/TempleteStuPage";
 import RecordPage from "container/RecordPage";
+import SelectPage from "container/SelectPage";
 function App() {
   return (
     <div className="App">
@@ -13,6 +14,7 @@ function App() {
                 <Route exact path="/" component={TopPage} />
                 <Route path="/template" component={TempleteStuPage} />
                 <Route path="/record_sound" component={RecordPage} />
+                <Route path="/user" component={SelectPage}/>
               </div>
       </Router>
     </div>

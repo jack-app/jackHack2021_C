@@ -1,17 +1,17 @@
 import {useGetDataApi} from "hooks/useApi";
 
 export function useGetTypes(){
-    const [ d, loading, error, loadFn ] = useGetDataApi('api/v1/template/type')
+    const [ d, loading, error, loadFn ] = useGetDataApi('/template/type')
     const types = d || []
     return types;
 }
 function useGetTopics(){
-    const [ d, loading, error, loadFn ] = useGetDataApi('api/v1//template/topic')
+    const [ d, loading, error, loadFn ] = useGetDataApi('/template/topic')
     const topics = d || []
     return topics;
 }
 function useGetQuestions(type: string){
-    const [ d, loading, error, loadFn ] = useGetDataApi(`api/v1//template/questions/${type}`)
+    const [ d, loading, error, loadFn ] = useGetDataApi(`/template/questions/${type}`)
     const questions = d || []
     return questions;
 }
