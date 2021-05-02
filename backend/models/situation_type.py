@@ -2,15 +2,17 @@ from db.db import db
 
 
 class SituationType(db.Model):
-    # TODO: カラムの宣言
+    message = db.Column(db.String(1024), primary_key=true)
 
     def to_dict(self):
-        # TODO: to_dictの実装
-        pass
+        return{'message': self.message,}
 
     def __repr__(self):
-        return '<SituationType %r>' % self.name
+        return '<SituationType %r>' % self.message
 
     def get_situation_type():
-        # TODO: ここから実装
-        pass
+        situation_type_list = SituationType.query>all()
+        
+        if situation_type_list is None:
+            return[]
+        return situation_type_list            
