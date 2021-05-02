@@ -71,7 +71,19 @@ jobs:
           cluster: jackhack-2021-backend-dev
           wait-for-service-stability: true
 
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
+      - name: Slack Notification Success
+        uses: rtCamp/action-slack-notify@v2.0.0
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_COLOR: "#5cb85c"
+          SLACK_TITLE: "Success to Deploy to GitHub Pages :rocket:"
+          SLACK_MESSAGE: ":closed_book: ${{ github.repository }}"
+
+      - name: Slack Notification Failure
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2.0.0
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_COLOR: "#dc143c"
+          SLACK_TITLE: "Failure to Deploy to GitHub Pages :boom:"
+          SLACK_MESSAGE: ":closed_book: ${{ github.repository }}"
