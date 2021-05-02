@@ -28,12 +28,9 @@ for text in text_list:
 # model = Word2Vec(sentences=sentences, vector_size=100,
 #                  window=5, min_count=1, workers=4)
 
-# model = FastText(vector_size=4, window=3, min_count=1)
-# model.build_vocab(sentences=sentences)
-# model.train(sentences=sentences, total_examples=len(sentences), epochs=10)
-model = FastText(vector_size=4, window=3, min_count=1,
+model = FastText(vector_size=5, window=3, min_count=1,
                  sentences=sentences, epochs=10)
 vec = model.wv['computer']
 print(vec)
 
-model.save("../train_model/word2vec.model")
+model.save("../train_model/fasttext.model")
