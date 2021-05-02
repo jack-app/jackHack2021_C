@@ -20,3 +20,12 @@ class User(db.Model):
         if user_list is None:
             return []
         return user_list
+
+    def post_user(self):
+        new_user = self
+
+        db.session.add(new_user)
+        db.session.flush()
+        db.session.commit()
+
+        return new_user.id
