@@ -16,14 +16,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set Google Aplication Credentials
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        run: |
-          touch google-credential.json
-          echo ${GOOGLE_APPLICATION_CREDENTIALS_JSON} > google-credential.json
-        working-directory: ./backend
-
       - name: Make task-definition
         env:
           TASK_DEFINITION_JSON: ${{ secrets.AWS_ECS_TASK_DEFINITION }}
