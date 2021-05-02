@@ -13,3 +13,7 @@ def text_embedding(text):
     vec = model.infer_vector(word_list)
 
     return vec
+
+
+def words_embedding(words):
+    pass
