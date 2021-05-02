@@ -21,12 +21,12 @@ jobs:
         with:
           node-version: 14.x
 
-#       - name: Make config.json
-#         env:
-#           CONFIG_JSON: ${{ secrets.FRONT_CONFIG_JSON }}
-#         run: |
-#           touch front/src/config.json
-#           echo ${CONFIG_JSON} > front/src/config.json
+      #       - name: Make config.json
+      #         env:
+      #           CONFIG_JSON: ${{ secrets.FRONT_CONFIG_JSON }}
+      #         run: |
+      #           touch front/src/config.json
+      #           echo ${CONFIG_JSON} > front/src/config.json
 
       - name: Package Install
         run: yarn install
@@ -46,7 +46,12 @@ jobs:
           AWS_REGION: "ap-northeast-1"
           FROM_PATH: "./front/build"
           DEST_PATH: ${{ secrets.AWS_S3_BUCKET_PATH }}
-          
+
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
         env:

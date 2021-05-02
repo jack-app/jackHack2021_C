@@ -16,6 +16,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Set Google Aplication Credentials
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        run: |
+          touch voice-recognition.json
+          echo ${GOOGLE_APPLICATION_CREDENTIALS_JSON} > voice-recognition.json
+          export GOOGLE_APPLICATION_CREDENTIALS=voice-recognition.json
+
       - name: Make task-definition
         env:
           TASK_DEFINITION_JSON: ${{ secrets.AWS_ECS_TASK_DEFINITION }}
