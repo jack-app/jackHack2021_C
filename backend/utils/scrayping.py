@@ -1,14 +1,17 @@
 import re
-from urllib import request
+# from urllib import request
 
 from bs4 import BeautifulSoup
 
 
-def get_page_content(url):
+def get_page_content(response):
     # get page file
-    response = request.urlopen(url)
+    # response = request.urlopen(url)
+
+    # soup = BeautifulSoup(response)
+    # response.close()
+
     soup = BeautifulSoup(response)
-    response.close()
 
     # extract text
     main_text = soup.find('div', class_='main_text')
@@ -21,5 +24,5 @@ def get_page_content(url):
 
     main_text = re.sub('([！。])', r'\1\n', main_text)  # 。と！で改行
     text_list = main_text.splitlines()
-    
+
     return text_list
