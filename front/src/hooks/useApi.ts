@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios, { AxiosResponse } from "axios";
 
-const hostname ="https://jackhack-2021-server-dev-678079989.ap-northeast-1.elb.amazonaws.com"
+const hostname ="http://jackhack-2021-server-1783148408.ap-northeast-1.elb.amazonaws.com"
 export function useGetDataApi(
   url: string,
   lazy: boolean = false,
@@ -14,6 +14,7 @@ export function useGetDataApi(
 
   const loadFn = (params: any = defaultParams) => {
     setLoading(true);
+    console.log("called loadfn")
     axios
       .get(hostname + url, { params })
       .then((res: AxiosResponse<any>) => {

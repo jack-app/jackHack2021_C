@@ -10,8 +10,9 @@ export function usePostDiary(params: Props){
     const [ d, loading, error, loadFn ] = usePostDataApi(`/diary`, params);
 }
 
-function useGetDiary(userId: string){
-    const [ d, loading, error, loadFn ] = useGetDataApi(`/diary/${userId}`);
+function useGetDiary(){
+    const [ d, loading, error, loadFn ] = useGetDataApi(`/diary`);
+    console.log(d)
     const diary = d || [];
     return diary;
 }
