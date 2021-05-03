@@ -15,7 +15,9 @@ def extract_words():
         abort(400, {'message': 'file is not found'})
 
     if voice_file and allwed_file(voice_file.filename):
-        text = speech_to_text(voice_file)
+        extension = voice_file.filename.rsplit('.', 1)[1].lower()
+
+        text = speech_to_text(voice_file, extension)
 
         text_vec = text_embedding(text)
         word_vec_dict = words_embedding(text)

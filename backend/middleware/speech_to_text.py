@@ -1,13 +1,16 @@
 from google.cloud import speech_v1p1beta1 as speech
 
 
-def speech_to_text(voice_file):
+def speech_to_text(voice_file, extension):
     client = speech.SpeechClient()
 
     language_code = "ja-JP"
     sample_rate_hertz = 44100
-    # encoding = speech.RecognitionConfig.AudioEncoding.MP3
+
     encoding = speech.RecognitionConfig.AudioEncoding.LINEAR16
+    if extension == 'mp3':
+        encoding = speech.RecognitionConfig.AudioEncoding.MP3
+
     config = {
         "language_code": language_code,
         "sample_rate_hertz": sample_rate_hertz,
