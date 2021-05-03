@@ -1,8 +1,11 @@
 jackhack2021 のチーム C のリポジトリです
 
+## Application
+http://d1chivvdzfemph.cloudfront.net/
+
 ## backend
 
-dev-server: jackhack-2021-backend-dev-811780550.ap-northeast-1.elb.amazonaws.com
+server: jackhack-2021-server-1783148408.ap-northeast-1.elb.amazonaws.com
 
 ### API 仕様
 

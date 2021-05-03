@@ -17,7 +17,11 @@ def text_embedding(text):
 
 
 def words_embedding(text):
-    word_list = list(t.tokenize(text, wakati=True))
+    # word_list = list(t.tokenize(text, wakati=True))
+    word_list = []
+    for token in t.tokenize(text):
+        if token.part_of_speech.split(',')[0] == '名詞':
+            word_list.append(token.surface)
 
     model = FastText.load(fasttext_model_path)
     vecs = {}
