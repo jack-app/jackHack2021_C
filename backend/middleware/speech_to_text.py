@@ -5,7 +5,7 @@ def speech_to_text(voice_file, extension):
     client = speech.SpeechClient()
 
     language_code = "ja-JP"
-    sample_rate_hertz = 44100
+    sample_rate_hertz = 48000
 
     encoding = speech.RecognitionConfig.AudioEncoding.LINEAR16
     if extension == 'mp3':
