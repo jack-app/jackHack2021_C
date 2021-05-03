@@ -14,11 +14,9 @@ export function useGetDataApi(
 
   const loadFn = (params: any = defaultParams) => {
     setLoading(true);
-    console.log("called loadfn")
     axios
       .get(hostname + url, { params })
       .then((res: AxiosResponse<any>) => {
-        console.log(res);
         setResponse(res.data);
         setLoading(false);
 
@@ -49,18 +47,15 @@ export function usePostDataApi(
     axios
     .post(hostname + url, params)
     .then((res: AxiosResponse<any>) => {
-      console.log(res);
       setResponse(res.data);
       setLoading(false);
     })
     .catch((err) => {
-        console.log("called")
         console.error(err);
         setError(err);
       });
   };
   useEffect(() => {
-    console.log(hostname + url);
     if (!lazy && defaultParams) loadFn(defaultParams);
   }, [url]);
   return [response, error, loadFn];

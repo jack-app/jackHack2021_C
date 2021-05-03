@@ -37,7 +37,6 @@ const RecordPage: React.FC = () => {
     const classes = useStyles();
     const [record, setRecord] = useState(false);
     const requestVoiceAnalyze = (blob: any) =>  {
-        console.log("asff")
         const data = new FormData();
         data.append("files", blob, "audio.wav");
         axios
@@ -48,10 +47,8 @@ const RecordPage: React.FC = () => {
         const onData = (recordedBlob: any) => {
         }
         const onStop = (recordedBlob: any) => {
-            console.log(recordedBlob);
             const f = async () => {
                 const blob = await fetch(recordedBlob.blobURL).then(r => r.blob())
-                console.log(blob)
                 requestVoiceAnalyze(blob);
             }
             f()

@@ -12,7 +12,6 @@ export function usePostDiary(params: Props){
 
 function useGetDiary(){
     const [ d, loading, error, loadFn ] = useGetDataApi(`/diary`);
-    console.log(d)
     const diary = d || [];
     return diary;
 }

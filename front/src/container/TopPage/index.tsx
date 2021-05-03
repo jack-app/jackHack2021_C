@@ -31,7 +31,6 @@ const NameInput = styled(Input)`
 const TopPage: React.FC = () => {
     const history = useHistory();
     const onFinish = useCallback((values) => {
-        console.log(values)
         const { username } = values;
         history.push(`/user?name=${escape(username)}`)
     },[])

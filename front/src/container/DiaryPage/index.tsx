@@ -26,7 +26,6 @@ const DiaryPage: React.FC = () => {
     const location = useLocation();
     const uuid = unescape(location.search.split("=")[1]);
     const diary = useGetDiary()
-    console.log(diary);
     return (
         <ContentWrapper>
             <Typography variant="h5" className={classes.title}>

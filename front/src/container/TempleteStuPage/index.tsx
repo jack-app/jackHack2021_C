@@ -35,10 +35,7 @@ const TempleteStuPage = React.memo(() => {
     const [topicid, setTopicId] = useState("")
     const classes = useStyles();
     const topics = useGetTopics();
-    console.log(topics);
-    console.log(data)
     useEffect(() => {
-        console.log(topicid)
         const getData = async () => {
         const response = await axios.get(
             `http://jackhack-2021-server-1783148408.ap-northeast-1.elb.amazonaws.com/questions/${topicid}`
@@ -47,7 +44,6 @@ const TempleteStuPage = React.memo(() => {
         }
         getData();
         if(topicid != ""){
-            console.log(data)
             setOpen(true);
         }
     }, [topicid])
