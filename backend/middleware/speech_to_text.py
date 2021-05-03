@@ -12,7 +12,8 @@ def speech_to_text(voice_file):
         "language_code": language_code,
         "sample_rate_hertz": sample_rate_hertz,
         "encoding": encoding,
-        "enable_speaker_diarization": True
+        "enable_speaker_diarization": True,
+        "audio_channel_count": 2,
     }
 
     voice_byte = voice_file.read()
