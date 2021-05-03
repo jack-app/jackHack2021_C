@@ -1,6 +1,7 @@
-from flask import jsonify, request
+from flask import jsonify, request, abort
 
 from models.diary import Diary
+from utils.check_params import check_params
 
 
 def get_diarys():
@@ -20,9 +21,20 @@ def get_diary(diary_id):
 
 
 def register_diary():
+    diary_requests = ['title', 'content', 'user_id']
+
+    if not check_params(request.json, diary_requests):
+        abort(400, {'message': 'parameter not found'})
+
     title = request.json["title"]
     content = request.json["content"]
     user_id = request.json["user_id"]
+
+    if title == '':
+        abort(400, {'message': 'title is null'})
+    if content == '':
+        abort(400, {'message': 'content is null'})
+
     new_diary = Diary(title=title, content=content,
                       user_id=user_id)
     diary_id = new_diary.post_diary()

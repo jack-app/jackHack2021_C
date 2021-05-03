@@ -46,6 +46,11 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
         working-directory: ./backend
 
+      - name: Test with unittest
+        run: |
+          python -m unittest discover controller
+        working-directory: ./backend
+
       - name: Slack Notification Success
         uses: rtCamp/action-slack-notify@v2
         env:

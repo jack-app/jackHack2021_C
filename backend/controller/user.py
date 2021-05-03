@@ -1,6 +1,7 @@
-from flask import jsonify, request
+from flask import jsonify, request, abort
 
 from models.user import User
+from utils.check_params import check_params
 
 
 def get_users():
@@ -20,7 +21,16 @@ def get_user(user_id):
 
 
 def register_user():
+    user_requests = ['name']
+
+    if not check_params(request.json, user_requests):
+        abort(400, {'message': 'parameter not found'})
+
     name = request.json["name"]
+
+    if name == '':
+        abort(400, {'message': 'name is null'})
+
     new_user = User(name=name)
     user_id = new_user.post_user()
 
