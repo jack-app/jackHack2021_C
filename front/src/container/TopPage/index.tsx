@@ -8,9 +8,21 @@ import { Link, useHistory } from "react-router-dom";
 const { Title, Text } = Typography;
 const MainTitle = styled(Title)`
     margin: 100px 0;
+    color: #21C49C;
+    font-size: 42x;
 `;
 const TextWrapper = styled.div`
     margin 40px 0;
+    text-align: left;
+`;
+const StyledInput = styled(Input)`
+    height: 60px;
+    border-color: #21C49C;
+    width: 200px;
+`
+const StyledButton = styled(Button)`
+    height: 30px;
+    width: 210px;
 `;
 const ExpText = styled(Text)`
 `;
@@ -18,7 +30,6 @@ const NameInput = styled(Input)`
 `;
 const TopPage: React.FC = () => {
     const history = useHistory();
-    const diary = useGetDiary()
     const onFinish = useCallback((values) => {
         console.log(values)
         const { username } = values;
@@ -27,7 +38,7 @@ const TopPage: React.FC = () => {
     return (
         <ContentWrapper>
             <MainTitle level={1}>
-                タイトルタイトル
+                トピつく
             </MainTitle>
             <TextWrapper>
                 <ExpText>
@@ -47,18 +58,18 @@ const TopPage: React.FC = () => {
                 </ExpText>
             </TextWrapper>
             <Form onFinish={onFinish}>
-                <Form.Item 
-                    label="username"
-                    name="username"
-                    rules={[{required: true, message: "名前を登録してください"}]}
-                >
-                    <Input/>
-                </Form.Item>
-                <Form.Item>
-                    <Button type="primary" htmlType="submit">
-                        登録
-                    </Button>
-                </Form.Item>
+                <Row>
+                    <Form.Item 
+                        rules={[{required: true, message: "名前を登録してください"}]}
+                    >
+                        <StyledInput/>
+                    </Form.Item>
+                    <Form.Item>
+                        <StyledButton type="primary" htmlType="submit">
+                            登録
+                        </StyledButton>
+                    </Form.Item>
+                </Row>
             </Form>
         </ContentWrapper>
     )

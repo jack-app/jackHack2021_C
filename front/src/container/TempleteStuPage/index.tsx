@@ -11,12 +11,12 @@ const useStyles = makeStyles((theme) => ({
       width: "100px",
       height: "100px",
       borderRadius: "20px",
-      backgroundColor: "red",
+      backgroundColor: "#58FEDB",
       fontWeight: "bold",
-      color: "#FFF"
+      color: "#1B2821"
   },
   text: {
-      margin: "30px 0",
+      margin: "50px 0",
       fontWeight: "bold"
   },
   buttonSection: {
@@ -74,21 +74,23 @@ const TempleteStuPage = React.memo(() => {
             </Grid>
             <Modal open={open} onClose={onClose}>
                 <div className = {classes.modal}>
-                    <Typography>
-                        関連する質問
-                    </Typography>
-                    {data.length > 0 ? (
-                        data.map((v: any) => (
-                            <Typography key={v.id}>
-                                {v.content}
-                            </Typography>
-                        ))
-                    ) : (
-                        <Typography>
-                            関連した質問は存在しません<br/>
-                            持ち前のコミュ力で乗り切りましょう。
+                    <ContentWrapper>
+                        <Typography className={classes.text}>
+                            関連する質問
                         </Typography>
-                    )}
+                        {data.length > 0 ? (
+                            data.map((v: any) => (
+                                <Typography key={v.id}>
+                                    {v.content}
+                                </Typography>
+                            ))
+                        ) : (
+                            <Typography>
+                                関連した質問は存在しません<br/>
+                                持ち前のコミュ力で乗り切りましょう。
+                            </Typography>
+                        )}
+                    </ContentWrapper>
                 </div>
                 
             </Modal>
