@@ -2,7 +2,7 @@ import React, {useEffect, useCallback, useState, memo } from 'react'
 import { Typography, Input, Form, Button, Row, Col } from "antd";
 import styled from "styled-components";
 import ContentWrapper from "components/atoms/ContentWrapper";
-import { usePostUser } from "hooks/useUser"; 
+import useGetDiary from "hooks/useDiary"; 
 import { Link, useHistory } from "react-router-dom";
 
 const { Title, Text } = Typography;
@@ -16,8 +16,9 @@ const ExpText = styled(Text)`
 `;
 const NameInput = styled(Input)`
 `;
-const TopPage = React.memo(() => {
+const TopPage: React.FC = () => {
     const history = useHistory();
+    const diary = useGetDiary()
     const onFinish = useCallback((values) => {
         console.log(values)
         const { username } = values;
@@ -61,6 +62,6 @@ const TopPage = React.memo(() => {
             </Form>
         </ContentWrapper>
     )
-})
+}
 
 export default TopPage;
