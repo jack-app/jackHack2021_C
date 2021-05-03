@@ -16,17 +16,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 const SelectPage = React.memo(() => {
-    const history = useHistory();
     const classes = useStyles();
     const [userName, setUserName] = useState<string | null>(null);
-    const [userUuid, setUserUuid] = useState<string | null>(null);
     const location = useLocation();
     const name = unescape(location.search.split("=")[1]);
     const {userid, loading} = usePostUser(name);
-    console.log("call")
     useEffect(() => {
         setUserName(name);
-        setUserUuid(userid);
+        console.log("called")
         return;
     },[loading])
     return (
@@ -37,7 +34,7 @@ const SelectPage = React.memo(() => {
                 )}
                 <Grid container spacing={2} alignItems="center" className={classes.grid}>
                     <Grid item xs={6}>
-                        <Link to="/template" className={classes.link}>
+                        <Link to={"/template?id="+ userid} className={classes.link}>
                             <Button color="primary" variant="contained" size="large" className={classes.button}>
                                 話題＆質問<br/>
                                 テンプレート
@@ -52,7 +49,7 @@ const SelectPage = React.memo(() => {
                 </Grid>
                 <Grid container spacing={2} alignItems="center" className={classes.grid}>
                     <Grid item xs={6}>
-                        <Link to="/record_sound" className={classes.link}>
+                        <Link to={"/record_sound?id="+userid} className={classes.link}>
                             <Button color="secondary" variant="contained" size="large" className={classes.button}>
                                 相手の話で<br/>
                                 盛り上がろう
@@ -68,7 +65,7 @@ const SelectPage = React.memo(() => {
                 </Grid>
                 <Grid container spacing={2} alignItems="center" className={classes.grid}>
                     <Grid item xs={6}>
-                        <Link to="/diary" className={classes.link}>
+                        <Link to={"/diary?id="+userid} className={classes.link}>
                             <Button variant="outlined" color="primary" size="large" className={classes.button}>
                                 自分の話で<br/>
                                 もりあがろう

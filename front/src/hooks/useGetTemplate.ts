@@ -5,13 +5,13 @@ export function useGetTypes(){
     const types = d || []
     return types;
 }
-function useGetTopics(){
-    const [ d, loading, error, loadFn ] = useGetDataApi('/template/topic')
+export function useGetTopics(){
+    const [ d, loading, error, loadFn ] = useGetDataApi('/topic')
     const topics = d || []
     return topics;
 }
-function useGetQuestions(type: string){
-    const [ d, loading, error, loadFn ] = useGetDataApi(`/template/questions/${type}`)
+export function useGetQuestions(topicid: string){
+    const [ d, loading, error, loadFn ] = useGetDataApi(`/template/questions/${topicid}`)
     const questions = d || []
     return questions;
 }

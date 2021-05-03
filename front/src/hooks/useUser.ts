@@ -4,8 +4,7 @@ export function usePostUser(username: string){
     const [ d, loading, error, loadFn ] = usePostDataApi(`/user`, {
         name: username
     });
-    const userid = d?.username;
-    console.log(d);
+    const userid = d?.id;
     return {userid, loading};
 }
 
